@@ -5,21 +5,15 @@
 <title>LiBecoM検出</title>
 </head>
 <body>
- 
 <h1>ランチクーポン表示</h1>
- 
 <button onclick="connectBLE()">
 LiBecoMを探す
 </button>
- 
 <p id="result">
 LiBecoM待機中
 </p>
- 
-photo_OUT.jpg
- 
+photo_OUT.jpgmax-width:100%; height:auto;">
 <script>
- 
 async function connectBLE() {
 try {
 const device = await navigator.bluetooth.requestDevice({
@@ -31,15 +25,13 @@ document.getElementById("result").innerHTML =
 "LiBecoM発見！ ランチ割引表示中";
 document.getElementById("photo").src =
 "photo_IN.jpg";
-}
-else {
+} else {
 document.getElementById("result").innerHTML =
 "LiBecoMではありません : " + name;
 document.getElementById("photo").src =
 "photo_OUT.jpg";
 }
-}
-catch(err) {
+} catch (err) {
 document.getElementById("result").innerHTML =
 "エラー : " + err;
 document.getElementById("photo").src =
@@ -49,3 +41,4 @@ document.getElementById("photo").src =
 </script>
 </body>
 </html>
+`
