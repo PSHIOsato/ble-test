@@ -1,28 +1,30 @@
+HTML
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>BLE画像表示テスト</title>
+<title>BLEテスト</title>
 </head>
 <body>
  
-<h1>BLE画像表示テスト</h1>
+<h1>BLEテスト</h1>
  
 <button onclick="connectBLE()">BLE接続</button>
  
 <p id="result">未接続</p>
  
-<img id="photo"
-src="https://picsum.photos/600/400"
-style="display:none;width:600px;max= await navigator.bluetooth.requestDevice({
+<script>
+ 
+async function connectBLE() {
+ 
+try {
+ 
+const device = await navigator.bluetooth.requestDevice({
 acceptAllDevices: true
 });
  
 document.getElementById("result").innerHTML =
 "発見: " + (device.name || "名称なし");
- 
-document.getElementById("photo").style.display =
-"block";
  
 } catch(err) {
  
@@ -32,7 +34,7 @@ document.getElementById("result").innerHTML =
 }
  
 }
-</script>
  
+</script>
 </body>
 </html>
