@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>BLE案内システム</title>
+</head>
+ 
+<body>
+ 
+<h1>ようこそ</h1>
+ 
+<button onclick="connectBLE()">
+BLE接続
+</button>
+ 
+<p id="message">
+まだ接続されていません
+</p>
+ 
+<img id="img1"
+src="welcome.jpg"
+connectBLE(){
+ 
+const device =
+await navigator.bluetooth.requestDevice({
+acceptAllDevices:true
+});
+ 
+document.getElementById("message").innerHTML =
+device.name + " を検出しました";
+ 
+document.getElementById("img1").style.display =
+"block";
+}
+ 
+</script>
+ 
+</body>
+</html>
