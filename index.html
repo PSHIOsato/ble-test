@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<title>BLE案内システム</title>
+<meta charset="UTF-8">
+<title>BLEテスト</title>
 </head>
- 
 <body>
  
-<h1>ようこそ</h1>
+<h1>BLEテスト</h1>
  
-<button onclick="connectBLE()">
-BLE接続
-</button>
+<button onclick="connectBLE()">BLE接続</button>
  
-<p id="message">
-まだ接続されていません
-</p>
+<p id="result">未接続</p>
  
-<img id="img1"
-src="welcome.jpg"
-connectBLE(){
+<script>
+async function connectBLE() {
+ 
+try {
  
 const device =
 await navigator.bluetooth.requestDevice({
-acceptAllDevices:true
+acceptAllDevices: true
 });
  
-document.getElementById("message").innerHTML =
-device.name + " を検出しました";
+document.getElementById("result").innerHTML =
+"接続候補を発見: " + device.name;
  
-document.getElementById("img1").style.display =
-"block";
+} catch(err) {
+ 
+document.getElementById("result").innerHTML =
+"エラー: " + err;
+ 
 }
  
+}
 </script>
  
 </body>
