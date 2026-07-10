@@ -24,9 +24,11 @@ LiBecoM待機中
 <script>
 async function connectBLE() {
   try {
-    const device = await navigator.bluetooth.requestDevice({
-      acceptAllDevices: true
-    });
+     const device = await navigator.bluetooth.requestDevice({
+       filters: [
+         { namePrefix: "LiBecoM" }
+       ]
+     });
 
     const name = device.name || "";
 
