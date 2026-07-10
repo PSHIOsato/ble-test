@@ -1,39 +1,43 @@
+HTML
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>BLEテスト</title>
+<title>LiBecoM検出</title>
 </head>
 <body>
  
-<h1>BLEテスト</h1>
+<h1>LiBecoM検出テスト</h1>
  
 <button onclick="connectBLE()">BLE接続</button>
  
 <p id="result">未接続</p>
  
+<img
+  id="photo"
+  src="https://picsum.photos/600/400"
+  style="display:none;width:600px;"
+>
+ 
 <script>
  
-async function connectBLE() {
- 
-try {
- 
-const device = await navigator.bluetooth.requestDevice({
+async function tooth.requestDevice({
 acceptAllDevices: true
 });
  
 document.getElementById("result").innerHTML =
 "発見: " + (device.name || "名称なし");
  
-} catch(err) {
+if(device.name === "LiBecoM") {
  
+document.getElementById("photo").style.display =
+"block";
+}
+} catch(err) {
 document.getElementById("result").innerHTML =
 "エラー: " + err;
- 
 }
- 
 }
- 
 </script>
 </body>
 </html>
