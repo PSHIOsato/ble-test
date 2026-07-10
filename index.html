@@ -23,6 +23,8 @@ LiBecoMを探す
      src="https://PSHIOsato.github.io/ble-test/couponA.jpg"
      style="max-width:100%; height:auto;">
 
+<p id="explain">
+</p>
 <script>
 async function connectBLE() {
   try {
@@ -41,6 +43,9 @@ async function connectBLE() {
       document.getElementById("photo").src =
         "https://PSHIOsato.github.io/ble-test/bill.jpg";
 
+      document.getElementById("explain").innerHTML =
+        "月末に飲食店へビルが社員割引利用金額を支払い<br>月末に企業がビルへ社員割引利用額を支払い";
+         
     } else {
       document.getElementById("result").innerHTML =
         "LiBecoMではありません : " + name;
