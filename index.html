@@ -2,15 +2,52 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>画像テスト</title>
+<title>LiBecoM検出2</title>
 </head>
-<body>
  
-<h1>画像テスト</h1>
+<body>
+<h1>ランチクーポン表示2</h1>
+ 
+<button onclick="connectBLE()">
+LiBecoMを探す
+</button>
+ 
+<p id="result">
+LiBecoM待機中
+</p>
+ 
+<img src="https://PSHIOsato.github.io/ble-test/couponA.jpg" >
+ 
+<script>
+async function connectBLE() {
+try {
+const device = await navigator.bluetooth.requestDevice({
+acceptAllDevices: true
+});
+ 
+const name = device.name || "";
+ 
+if (name.includes("LiBecoM")) {
+document.getElementById("result").innerHTML =
+"LiBecoM発見！ ランチ割引表示中";
  
 <img src="https://PSHIOsato.github.io/ble-test/bill.jpg" >
+ 
+} else {
+document.getElementById("result").innerHTML =
+"LiBecoMではありません : " + name;
+ 
 <img src="https://PSHIOsato.github.io/ble-test/couponA.jpg" >
-
-  
+}
+ 
+} catch (err) {
+document.getElementById("result").innerHTML =
+"エラー : " + err;
+ 
+<img src="https://PSHIOsato.github.io/ble-test/couponA.jpg" >
+}
+}
+</script>
+ 
 </body>
 </html>
