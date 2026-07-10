@@ -2,48 +2,50 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>LiBecoM BLE検出</title>
+<title>LiBecoM検出</title>
 </head>
 <body>
-<h1>LiBecoM BLE検出テスト</h1>
-  
+ 
+<h1>ランチクーポン表示</h1>
+ 
 <button onclick="connectBLE()">
 LiBecoMを探す
 </button>
  
 <p id="result">
-未接続
+LiBecoM待機中
 </p>
  
-https://picsum.photos/600/400
+photo_OUT.jpg
  
 <script>
+ 
 async function connectBLE() {
 try {
-document.getElementById("result").innerHTML =
-"BLEデバイスを検索中...";
 const device = await navigator.bluetooth.requestDevice({
 acceptAllDevices: true
 });
- 
 const name = device.name || "";
 if (name.includes("LiBecoM")) {
 document.getElementById("result").innerHTML =
-"LiBecoM発見！ 機器名: " + name;
-document.getElementById("photo").style.display =
-"block";
-} else {
-document.getElementById("result").innerHTML =
-"LiBecoM以外の機器です。機器名: " + (name || "名称なし");
-document.getElementById("photo").style.display =
-"none";
+"LiBecoM発見！ ランチ割引表示中";
+document.getElementById("photo").src =
+"photo_IN.jpg";
 }
-} catch(err) {
+else {
 document.getElementById("result").innerHTML =
-"エラー: " + err;
+"LiBecoMではありません : " + name;
+document.getElementById("photo").src =
+"photo_OUT.jpg";
+}
+}
+catch(err) {
+document.getElementById("result").innerHTML =
+"エラー : " + err;
+document.getElementById("photo").src =
+"photo_OUT.jpg";
 }
 }
 </script>
 </body>
 </html>
-`
