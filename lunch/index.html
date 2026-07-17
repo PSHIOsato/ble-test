@@ -20,7 +20,7 @@ LiBecoMを探す
 </p>
 
 <img id="photo"
-     src="https://PSHIOsato.github.io/ble-test/couponA.jpg"
+     src="https://PSHIOsato.github.io/ble-test/lunch/couponA.jpg"
      style="max-width:100%; height:auto;">
 
 <p id="explain">
@@ -41,7 +41,7 @@ async function connectBLE() {
         "LiBecoM発見！ ランチ割引表示中<br>今月の残食事補助額：２５００円";
 
       document.getElementById("photo").src =
-        "https://PSHIOsato.github.io/ble-test/bill.jpg";
+        "https://PSHIOsato.github.io/ble-test/lunch/bill.jpg";
 
       document.getElementById("explain").innerHTML =
         "月末に飲食店へビルが社員割引利用金額を支払い<br>月末に企業がビルへ社員割引利用額を支払い";
@@ -51,7 +51,7 @@ async function connectBLE() {
         "LiBecoMではありません : " + name;
 
       document.getElementById("photo").src =
-        "https://PSHIOsato.github.io/ble-test/couponA.jpg";
+        "https://PSHIOsato.github.io/ble-test/lunch/couponA.jpg";
     }
 
   } catch (err) {
@@ -59,7 +59,7 @@ async function connectBLE() {
       "エラー : " + err;
 
     document.getElementById("photo").src =
-      "https://PSHIOsato.github.io/ble-test/couponA.jpg";
+      "https://PSHIOsato.github.io/ble-test/lunch/couponA.jpg";
   }
 }
 </script>
