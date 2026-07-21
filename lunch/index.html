@@ -1,65 +1,127 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>LiBecoM検出</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>ランチクーポン表示</title>
+
+  <!-- 1階層上のstyle.cssを読み込み -->
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
-<h1>ランチクーポン表示</h1>
+<div class="phone">
+  <div class="screen">
 
-<button onclick="connectBLE()">
-LiBecoMを探す
-</button>
+    <!-- ステータスバー -->
+    <div class="status">
+      <span>9:41</span>
+      <span>5G ▰</span>
+    </div>
 
-<p id="result">
-飲食店でLiBecoMと接続して、お会計時に提示すると割引されます。<br>
-対象店舗　：　電工食堂<br>
-※11時に社用携帯に配布
-</p>
+    <!-- ヘッダー -->
+    <header class="top">
+      <div class="top-sub">
+        SHIOMER ランチサービス
+      </div>
 
-<img id="photo"
+      <h1>
+        ランチクーポン
+      </h1>
+
+      <div class="building">
+        <span>🍱 社員向け特典</span>
+        <strong>配信中</strong>
+      </div>
+    </header>
+
+    <!-- メイン -->
+    <main class="content">
+
+      <section class="card">
+        <div class="section-title">
+          本日のクーポン
+        </div>
+
+        <p id="result">
+          飲食店でLiBecoMと接続して、お会計時に提示すると割引されます。<br>
+          対象店舗：電工食堂<br>
+          ※11時に社用携帯に配布
+        </p>
+      </section>
+
+      <section class="card">
+ <img id="photo"
      src="https://PSHIOsato.github.io/ble-test/lunch/couponA.jpg"
      style="max-width:100%; height:auto;">
 
-<p id="explain">
-</p>
+      </section>
+
+      <section class="card">
+        <button
+          type="button"
+          class="button button-primary"
+          onclick="connectBLE()"
+        >
+          LiBecoMを探す
+        </button>
+      </section>
+
+      <section class="card">
+        <p id="explain"></p>
+      </section>
+
+    </main>
+
+    <!-- 下部ナビ -->
+    <nav class="bottom-nav">
+
+       <a class="nav-item" href="../index.html">
+        🏠<br>
+        ホーム
+      </a>
+    </nav>
+
+  </div>
+</div>
+
 <script>
 async function connectBLE() {
   try {
-     const device = await navigator.bluetooth.requestDevice({
-       filters: [
-         { namePrefix: "LiBecoM" }
-       ]
-     });
+    const device = await navigator.bluetooth.requestDevice({
+      filters: [
+        { namePrefix: "LiBecoM" }
+      ]
+    });
 
     const name = device.name || "";
 
     if (name.includes("LiBecoM")) {
       document.getElementById("result").innerHTML =
-        "LiBecoM発見！ ランチ割引表示中<br>今月の残食事補助額：２５００円";
+        "LiBecoM発見！ ランチ割引表示中<br>今月の残食事補助額：2500円";
 
-      document.getElementById("photo").src =
-        "https://PSHIOsato.github.io/ble-test/lunch/bill.jpg";
+      document.getElementById("photo").src = "https://PSHIOsato.github.io/ble-test/lunch/bill.jpg";
 
       document.getElementById("explain").innerHTML =
         "月末に飲食店へビルが社員割引利用金額を支払い<br>月末に企業がビルへ社員割引利用額を支払い";
-         
     } else {
       document.getElementById("result").innerHTML =
         "LiBecoMではありません : " + name;
 
-      document.getElementById("photo").src =
-        "https://PSHIOsato.github.io/ble-test/lunch/couponA.jpg";
+      document.getElementById("photo").src = "https://PSHIOsato.github.io/ble-test/lunch/couponA.jpg";
+
+      document.getElementById("explain").innerHTML = "";
     }
 
   } catch (err) {
     document.getElementById("result").innerHTML =
       "エラー : " + err;
 
-    document.getElementById("photo").src =
-      "https://PSHIOsato.github.io/ble-test/lunch/couponA.jpg";
+    document.getElementById("photo").src = "https://PSHIOsato.github.io/ble-test/lunch/couponA.jpg";
+
+    document.getElementById("explain").innerHTML = "";
   }
 }
 </script>
