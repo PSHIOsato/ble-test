@@ -150,12 +150,11 @@ body {
 }
 
 .grid {
-  display: grid;
+  display: grid
   grid-template-columns:
-    repeat(3, 1fr);
-
+  repeat(2, 110px);
+  justify-ccontent:Center;
   gap: 10px;
-  justify-content:Center;
 }
 
 .menu {
