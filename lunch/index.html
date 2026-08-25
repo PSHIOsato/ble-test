@@ -62,6 +62,7 @@
 
       <section class="card">
         <button
+          id="payButton"
           type="button"
           class="button button-primary"
           onclick="connectBLE()"
@@ -104,11 +105,10 @@ async function connectBLE() {
         "お会計時に本クーポンをご提示ください<br>今月の食事補助利用8回目";
 
       document.getElementById("photo").src = "https://PSHIOsato.github.io/ble-test/lunch/bill.jpg";
-
-      <!--
-        document.getElementById("explain").innerHTML =
-        "月末に飲食店へビルが社員割引利用金額を支払い<br>月末に企業がビルへ社員割引利用額を支払い";
-      -->
+      document.getElementById("payButton").style.display = "none"; // ボタン非表示
+      // document.getElementById("explain").innerHTML =
+      // "月末に飲食店へビルが社員割引利用金額を支払い<br>月末に企業がビルへ社員割引利用額を支払い";
+      
     } else {
       document.getElementById("result").innerHTML =
         "LiBecoMではありません : " + name;
